@@ -32,20 +32,20 @@ public class StartMenu implements Runnable {
         components.add(titlePanel);
         final JLabel titleLabel = new JLabel("Chess");
         titlePanel.add(titleLabel);
-        
+
         // Black player selections
         final JPanel blackPanel = new JPanel();
         components.add(blackPanel, BorderLayout.EAST);
         final JLabel blackPiece = new JLabel();
         try {
-            Image blackImg = ImageIO.read(getClass().getResource("bp.png"));
+            Image blackImg = ImageIO.read(getClass().getResource("resources/bpawn.png"));
             blackPiece.setIcon(new ImageIcon(blackImg));
             blackPanel.add(blackPiece);
         } catch (Exception e) {
             System.out.println("Required game file bp.png missing");
         }
-        
-        
+
+
         
         final JTextField blackInput = new JTextField("Black", 10);
         blackPanel.add(blackInput);
@@ -56,7 +56,7 @@ public class StartMenu implements Runnable {
         final JLabel whitePiece = new JLabel();
         
         try {
-            Image whiteImg = ImageIO.read(getClass().getResource("wp.png"));
+            Image whiteImg = ImageIO.read(getClass().getResource("resources/wpawn.png"));
             whitePiece.setIcon(new ImageIcon(whiteImg));
             whitePanel.add(whitePiece);
             startWindow.setIconImage(whiteImg);

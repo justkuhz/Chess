@@ -16,18 +16,18 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Board extends JPanel implements MouseListener, MouseMotionListener {
 	// Resource location constants for piece images
-    private static final String RESOURCES_WBISHOP_PNG = "wbishop.png";
-	private static final String RESOURCES_BBISHOP_PNG = "bbishop.png";
-	private static final String RESOURCES_WKNIGHT_PNG = "wknight.png";
-	private static final String RESOURCES_BKNIGHT_PNG = "bknight.png";
-	private static final String RESOURCES_WROOK_PNG = "wrook.png";
-	private static final String RESOURCES_BROOK_PNG = "brook.png";
-	private static final String RESOURCES_WKING_PNG = "wking.png";
-	private static final String RESOURCES_BKING_PNG = "bking.png";
-	private static final String RESOURCES_BQUEEN_PNG = "bqueen.png";
-	private static final String RESOURCES_WQUEEN_PNG = "wqueen.png";
-	private static final String RESOURCES_WPAWN_PNG = "wpawn.png";
-	private static final String RESOURCES_BPAWN_PNG = "bpawn.png";
+    private static final String RESOURCES_WBISHOP_PNG = "resources/wbishop.png";
+	private static final String RESOURCES_BBISHOP_PNG = "resources/bbishop.png";
+	private static final String RESOURCES_WKNIGHT_PNG = "resources/wknight.png";
+	private static final String RESOURCES_BKNIGHT_PNG = "resources/bknight.png";
+	private static final String RESOURCES_WROOK_PNG = "resources/wrook.png";
+	private static final String RESOURCES_BROOK_PNG = "resources/brook.png";
+	private static final String RESOURCES_WKING_PNG = "resources/wking.png";
+	private static final String RESOURCES_BKING_PNG = "resources/bking.png";
+	private static final String RESOURCES_BQUEEN_PNG = "resources/bqueen.png";
+	private static final String RESOURCES_WQUEEN_PNG = "resources/wqueen.png";
+	private static final String RESOURCES_WPAWN_PNG = "resources/wpawn.png";
+	private static final String RESOURCES_BPAWN_PNG = "resources/bpawn.png";
 	
 	// Logical and graphical representations of board
 	private final Square[][] board;
