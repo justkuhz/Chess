@@ -1,0 +1,1 @@
+Can open the "Game.java" class from src and run the psv main method.
