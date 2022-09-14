@@ -12,7 +12,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.*;
-
+/**
+ * This class is where the board is created, pieces are put onto the board, mouse/motion listeners are created
+ * and used,
+ *
+ * @author Kyle Techentin, Ken Zhu, Jesse Montel
+ * @since 2022-09-14
+ */
 @SuppressWarnings("serial")
 public class Board extends JPanel implements MouseListener, MouseMotionListener {
 	// Resource location constants for piece images

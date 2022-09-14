@@ -15,7 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+/**
+ * This class is where the JFrame startMenu is created along with all of the corresponding panels. Buttons and pop up
+ * windows with messages relating to the status of the game are created here as well.
+ *
+ * @author Kyle Techentin, Ken Zhu, Jesse Montel
+ * @since 2022-09-14
+ */
 public class StartMenu implements Runnable {
     public void run() {
         final JFrame startWindow = new JFrame("Chess");
