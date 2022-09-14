@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Bishop extends Piece {
 
-    public Bishop(int color, Square initSq, String img_file) {
-        super(color, initSq, img_file);
+    public Bishop(int color, Square initSq, String img_file, String type) {
+        super(color, initSq, img_file, type);
     }
     
     @Override

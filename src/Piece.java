@@ -11,12 +11,14 @@ import javax.imageio.ImageIO;
 
 public abstract class Piece {
     private final int color;
+    private final String type;
     private Square currentSquare;
     private BufferedImage img;
     
-    public Piece(int color, Square initSq, String img_file) {
+    public Piece(int color, Square initSq, String img_file, String type) {
         this.color = color;
         this.currentSquare = initSq;
+        this.type = type;
         
         try {
             if (this.img == null) {
@@ -56,7 +58,11 @@ public abstract class Piece {
     public Image getImage() {
         return img;
     }
-    
+
+    public String getType() {
+        return type;
+    }
+
     public void draw(Graphics g) {
         int x = currentSquare.getX();
         int y = currentSquare.getY();

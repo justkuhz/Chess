@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Knight extends Piece {
 
-    public Knight(int color, Square initSq, String img_file) {
-        super(color, initSq, img_file);
+    public Knight(int color, Square initSq, String img_file, String type) {
+        super(color, initSq, img_file, type);
     }
 
     @Override

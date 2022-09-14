@@ -5,8 +5,8 @@ import java.util.List;
 
 public class King extends Piece {
 
-    public King(int color, Square initSq, String img_file) {
-        super(color, initSq, img_file);
+    public King(int color, Square initSq, String img_file, String type) {
+        super(color, initSq, img_file, type);
     }
 
     @Override
