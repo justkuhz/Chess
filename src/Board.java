@@ -85,8 +85,8 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     private void initializePieces() {
     	
         for (int x = 0; x < 8; x++) {
-            board[1][x].put(new Pawn(0, board[1][x], RESOURCES_BPAWN_PNG, "wPawn"));
-            board[6][x].put(new Pawn(1, board[6][x], RESOURCES_WPAWN_PNG, "bPawn"));
+            board[1][x].put(new Pawn(0, board[1][x], RESOURCES_BPAWN_PNG, "bPawn"));
+            board[6][x].put(new Pawn(1, board[6][x], RESOURCES_WPAWN_PNG, "wPawn"));
         }
         
         board[7][3].put(new Queen(1, board[7][3], RESOURCES_WQUEEN_PNG, "wQueen"));
@@ -207,6 +207,21 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
             if (legalMoves.contains(sq) && movable.contains(sq)
                     && cmd.testMove(currPiece, sq)) {
                 sq.setDisplay(true);
+
+                if (sq.getOccupyingPiece() != null &&
+                        sq.getOccupyingPiece().getColor() == 0 &&
+                        sq.getOccupyingPiece().getType().equals("bKing")) {
+                    currPiece.move(sq);
+                    g.kingTaken(0);
+                }
+
+                else if (sq.getOccupyingPiece() != null &&
+                        sq.getOccupyingPiece().getColor() == 1 &&
+                        sq.getOccupyingPiece().getType().equals("wKing")) {
+                    currPiece.move(sq);
+                    g.kingTaken(1);
+                }
+
                 currPiece.move(sq);
                 pawnPromotionCheck(sq);
                 cmd.update();

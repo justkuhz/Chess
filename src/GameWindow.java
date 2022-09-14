@@ -216,7 +216,38 @@ public class GameWindow {
         
         return buttons;
     }
-    
+
+    public void kingTaken(int c) {
+
+        if (c == 0) {
+            if (timer != null) timer.stop();
+            int n = JOptionPane.showConfirmDialog(
+                    gameWindow,
+                    "White wins by capturing Black King! Set up a new game? \n" +
+                            "Choosing \"No\" lets you look at the final situation.",
+                    "White wins!",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (n == JOptionPane.YES_OPTION) {
+                SwingUtilities.invokeLater(new StartMenu());
+                gameWindow.dispose();
+            }
+        } else {
+            if (timer != null) timer.stop();
+            int n = JOptionPane.showConfirmDialog(
+                    gameWindow,
+                    "Black wins by capturing White King! Set up a new game? \n" +
+                            "Choosing \"No\" lets you look at the final situation.",
+                    "Black wins!",
+                    JOptionPane.YES_NO_OPTION);
+
+            if (n == JOptionPane.YES_OPTION) {
+                SwingUtilities.invokeLater(new StartMenu());
+                gameWindow.dispose();
+            }
+        }
+    }
+
     public void checkmateOccurred (int c) {
         if (c == 0) {
             if (timer != null) timer.stop();
