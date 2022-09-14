@@ -5,8 +5,21 @@ import java.awt.Graphics;
 
 import javax.swing.*;
 
+/**
+ * This class is used for accessing what is in each square individually on the board. Along with many of that pieces
+ * attributes: x and y coordinates, if a piece is in the square, what type of piece is in that square (if any), and
+ * color. This class also allows for the placing, removing, and capturing of pieces on the board.
+ * It also holds a repaint feature that goes and paints over the board and adds currents pieces back on as well.
+ *
+ * @author Kyle Techentin, Ken Zhu, Jesse Montel
+ * @version 3.0
+ * @since 2022-09-14
+ */
 @SuppressWarnings("serial")
+
+
 public class Square extends JComponent {
+
     private Board b;
     
     private final int color;

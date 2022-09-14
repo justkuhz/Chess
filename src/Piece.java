@@ -9,6 +9,14 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+/**
+ * This class is abstract and also the parent class of all other named piece classes.
+ * From this class those pieces can inherit and overwrite many different methods that
+ * will be used to get their move set, read the board, and know their own properties.
+ *
+ * @author Kyle Techentin, Ken Zhu, Jesse Montel
+ * @since 2022-09-14
+ */
 public abstract class Piece {
     private final int color;
     private final String type;
@@ -28,7 +36,14 @@ public abstract class Piece {
             System.out.println("File not found: " + e.getMessage());
           }
     }
-    
+
+    /**
+     * This method
+     *
+     * @param fin this is the final square that a piece ends on after moving
+     * @return returns false inside the boolean if there is a piece of the same color in the final move spot, but
+     * returns true if it is null, or there was a piece of a different color there
+     */
     public boolean move(Square fin) {
         Piece occup = fin.getOccupyingPiece();
         
@@ -63,24 +78,39 @@ public abstract class Piece {
         return type;
     }
 
+    /**
+     * This method
+     *
+     * @param g is the objects personal information, think color, x and y coordinates etc...
+     */
     public void draw(Graphics g) {
         int x = currentSquare.getX();
         int y = currentSquare.getY();
         
         g.drawImage(this.img, x, y, null);
     }
-    
+
+    /**
+     * This method will get the occupancy of pieces that are in linear squares to the piece who's coordinates are
+     * passed in.
+     *
+     * @param board passes in the board of individual squares so that we can access what is actually on those squares
+     * @param x This passes in the x coordinate of piece in question
+     * @param y This passes in the y coordinates of piece in question
+     * @return array the of last position in all directions of the piece in question
+     */
     public int[] getLinearOccupations(Square[][] board, int x, int y) {
         int lastYabove = 0;
         int lastXright = 7;
         int lastYbelow = 7;
         int lastXleft = 0;
-        
+
+        // These for loops will find how far there is until another piece
         for (int i = 0; i < y; i++) {
-            if (board[i][x].isOccupied()) {
-                if (board[i][x].getOccupyingPiece().getColor() != this.color) {
-                    lastYabove = i;
-                } else lastYabove = i + 1;
+            if (board[i][x].isOccupied()) { // iterating through the y-values of this column
+                if (board[i][x].getOccupyingPiece().getColor() != this.color) {  // If a piece is met check the color
+                    lastYabove = i; // If it is an opposing piece we stop the
+                } else lastYabove = i + 1; // If the color is not different you cannot move as far
             }
         }
 
@@ -112,7 +142,15 @@ public abstract class Piece {
         
         return occups;
     }
-    
+    /**
+     * This method will get the occupancy of pieces that are in linear squares to the piece who's coordinates are
+     * passed in.
+     *
+     * @param board passes in the board of individual squares so that we can access what is actually on those squares
+     * @param x This passes in the x coordinate of piece in question
+     * @param y This passes in the y coordinates of piece in question
+     * @return A list of squares that hold
+     */
     public List<Square> getDiagonalOccupations(Square[][] board, int x, int y) {
         LinkedList<Square> diagOccup = new LinkedList<Square>();
         

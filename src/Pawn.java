@@ -3,6 +3,12 @@
 import java.util.List;
 import java.util.LinkedList;
 
+/**
+ * This class is where the pawn implements its version of move and getLegalMoves from the parent class piece
+ *
+ * @author Kyle Techentin, Ken Zhu, Jesse Montel
+ * @since 2022-09-14
+ */
 public class Pawn extends Piece {
     private boolean wasMoved;
     
