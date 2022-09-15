@@ -22,6 +22,8 @@ public abstract class Piece {
     private final String type;
     private Square currentSquare;
     private BufferedImage img;
+
+    public boolean hasMoved = false;
     
     public Piece(int color, Square initSq, String img_file, String type) {
         this.color = color;
@@ -38,7 +40,7 @@ public abstract class Piece {
     }
 
     /**
-     * This method
+     *
      *
      * @param fin this is the final square that a piece ends on after moving
      * @return returns false inside the boolean if there is a piece of the same color in the final move spot, but
@@ -55,6 +57,7 @@ public abstract class Piece {
         currentSquare.removePiece();
         this.currentSquare = fin;
         currentSquare.put(this);
+        hasMoved = true;
         return true;
     }
     

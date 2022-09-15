@@ -14,7 +14,7 @@ import java.util.List;
 import javax.swing.*;
 /**
  * This class is where the board is created, pieces are put onto the board, mouse/motion listeners are created
- * and used,
+ * and used
  *
  * @author Kyle Techentin, Ken Zhu, Jesse Montel
  * @since 2022-09-14
@@ -226,6 +226,43 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
                         sq.getOccupyingPiece().getType().equals("wKing")) {
                     currPiece.move(sq);
                     g.kingTaken(1);
+                }
+                //handles castling movement
+                else if (currPiece.getType().equals("wKing")){
+                   if (sq.getXNum() == 2 && sq.getYNum() == 7){
+                       board[7][3].put(new Rook(1, board[7][3], RESOURCES_WROOK_PNG, "wRook"));
+                       board[7][3].getOccupyingPiece().hasMoved = true;
+                       board[7][0].removePiece();
+                       Square reDisplay = (Square) this.getComponentAt(new Point(162, 351));
+                       reDisplay.setDisplay(true);
+
+                   }
+                    if (sq.getXNum() == 6 && sq.getYNum() == 7){
+                        board[7][5].put(new Rook(1, board[7][5], RESOURCES_WROOK_PNG, "wRook"));
+                        board[7][5].getOccupyingPiece().hasMoved = true;
+                        board[7][7].removePiece();
+                        Square reDisplay = (Square) this.getComponentAt(new Point(268, 365));
+                        reDisplay.setDisplay(true);
+
+                    }
+                }
+                else if (currPiece.getType().equals("bKing")){
+                    if (sq.getXNum() == 2 && sq.getYNum() == 0){
+                        board[0][3].put(new Rook(1, board[0][3], RESOURCES_BROOK_PNG, "bRook"));
+                        board[0][3].getOccupyingPiece().hasMoved = true;
+                        board[0][0].removePiece();
+                        Square reDisplay = (Square) this.getComponentAt(new Point(162, 26));
+                        reDisplay.setDisplay(true);
+
+                    }
+                    if (sq.getXNum() == 6 && sq.getYNum() == 0){
+                        board[0][5].put(new Rook(1, board[0][5], RESOURCES_BROOK_PNG, "bRook"));
+                        board[0][5].getOccupyingPiece().hasMoved = true;
+                        board[0][7].removePiece();
+                        Square reDisplay = (Square) this.getComponentAt(new Point(268, 26));
+                        reDisplay.setDisplay(true);
+
+                    }
                 }
 
                 currPiece.move(sq);

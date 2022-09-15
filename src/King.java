@@ -17,7 +17,42 @@ LinkedList<Square> legalMoves = new LinkedList<Square>();
         
         int x = this.getPosition().getXNum();
         int y = this.getPosition().getYNum();
-        
+//Determining if castling is possible
+        if (!hasMoved){
+            for(int j = 0; j < 8; j++){
+                for(int i = 0; i < 8; i++){
+                    if(this.getColor() == 1) {
+                        if (board[j][i].isOccupied()) {
+                            if (board[j][i].getOccupyingPiece().getType().equals("wRook")) {
+                                if (!board[j][i].getOccupyingPiece().hasMoved) {
+                                    if (i == 7 && !board[j][5].isOccupied() && !board[j][6].isOccupied()) {
+                                        legalMoves.add(board[j][i-1]);
+                                    }
+                                    if (i == 0 && !board[j][1].isOccupied() && !board[j][2].isOccupied() && !board[j][3].isOccupied()) {
+                                        legalMoves.add(board[j][i+2]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if(this.getColor() == 0) {
+                        if (board[j][i].isOccupied()) {
+                            if (board[j][i].getOccupyingPiece().getType().equals("bRook")) {
+                                if (!board[j][i].getOccupyingPiece().hasMoved) {
+                                    if (i == 7 && !board[j][5].isOccupied() && !board[j][6].isOccupied()) {
+                                        legalMoves.add(board[j][i - 1]);
+                                    }
+                                    if (i == 0 && !board[j][1].isOccupied() && !board[j][2].isOccupied() && !board[j][3].isOccupied()) {
+                                        legalMoves.add(board[j][i + 2]);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         for (int i = 1; i > -2; i--) {
             for (int k = 1; k > -2; k--) {
                 if(!(i == 0 && k == 0)) {
