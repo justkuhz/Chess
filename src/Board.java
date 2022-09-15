@@ -51,7 +51,8 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
     private int currY;
     
     private CheckmateDetector cmd;
-    
+
+    // Constrcutor
     public Board(GameWindow g) {
         this.g = g;
         board = new Square[8][8];
@@ -196,7 +197,11 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
         }
         repaint();
     }
-
+    /**
+     * This method deals with anything that may happen when the mouse is released
+     *
+     * @param e MouseEvent so that we know when the mouse is released
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
         Square sq = (Square) this.getComponentAt(new Point(e.getX(), e.getY()));
@@ -230,17 +235,24 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
                 //handles castling movement
                 else if (currPiece.getType().equals("wKing")){
                    if (sq.getXNum() == 2 && sq.getYNum() == 7){
+
+                       // These 3 lines reposition the rook to its correct place after castling
                        board[7][3].put(new Rook(1, board[7][3], RESOURCES_WROOK_PNG, "wRook"));
                        board[7][3].getOccupyingPiece().hasMoved = true;
                        board[7][0].removePiece();
+
+                       // These two lines of code are used to turn the display of the new rook back on. Without these
+                       // the rook would be invisible until clicked on
                        Square reDisplay = (Square) this.getComponentAt(new Point(162, 351));
                        reDisplay.setDisplay(true);
 
                    }
                     if (sq.getXNum() == 6 && sq.getYNum() == 7){
+
                         board[7][5].put(new Rook(1, board[7][5], RESOURCES_WROOK_PNG, "wRook"));
                         board[7][5].getOccupyingPiece().hasMoved = true;
                         board[7][7].removePiece();
+
                         Square reDisplay = (Square) this.getComponentAt(new Point(268, 365));
                         reDisplay.setDisplay(true);
 
@@ -248,17 +260,21 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
                 }
                 else if (currPiece.getType().equals("bKing")){
                     if (sq.getXNum() == 2 && sq.getYNum() == 0){
+
                         board[0][3].put(new Rook(1, board[0][3], RESOURCES_BROOK_PNG, "bRook"));
                         board[0][3].getOccupyingPiece().hasMoved = true;
                         board[0][0].removePiece();
+
                         Square reDisplay = (Square) this.getComponentAt(new Point(162, 26));
                         reDisplay.setDisplay(true);
 
                     }
                     if (sq.getXNum() == 6 && sq.getYNum() == 0){
+
                         board[0][5].put(new Rook(1, board[0][5], RESOURCES_BROOK_PNG, "bRook"));
                         board[0][5].getOccupyingPiece().hasMoved = true;
                         board[0][7].removePiece();
+
                         Square reDisplay = (Square) this.getComponentAt(new Point(268, 26));
                         reDisplay.setDisplay(true);
 
