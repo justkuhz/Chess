@@ -9,7 +9,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 
 /**
- * Component of the Chess game that detects check mates in the game.
+ * This class is utilized to detect when the chess game has a checkmate in play for either player. Sadly most of this
+ * code does not work.
  * 
  * @author Kyle Techentin, Ken Zhu, Jesse Montel
  *
@@ -26,14 +27,14 @@ public class CheckmateDetector {
     private HashMap<Square,List<Piece>> bMoves;
     
     /**
-     * Constructs a new instance of CheckmateDetector on a given board. By
-     * convention should be called when the board is in its initial state.
+     * Constructs a new instance of CheckmateDetector on a given board. Will be called before any new moves are made
+     * by the players.
      * 
      * @param b The board which the detector monitors
      * @param wPieces White pieces on the board.
      * @param bPieces Black pieces on the board.
-     * @param wk Piece object representing the white king
-     * @param bk Piece object representing the black king
+     * @param wk Piece object for the white King
+     * @param bk Piece object for the black King
      */
     public CheckmateDetector(Board b, LinkedList<Piece> wPieces, 
             LinkedList<Piece> bPieces, King wk, King bk) {
@@ -68,7 +69,7 @@ public class CheckmateDetector {
      * Updates the object with the current situation of the game.
      */
     public void update() {
-        // Iterators through pieces
+        // Iterates through pieces
         Iterator<Piece> wIter = wPieces.iterator();
         Iterator<Piece> bIter = bPieces.iterator();
         
@@ -196,6 +197,7 @@ public class CheckmateDetector {
     /*
      * Helper method to determine if the king can evade the check.
      * Gives a false positive if the king can capture the checking piece.
+     * DOES NOT WORK AS INTENDED
      */
     private boolean canEvade(Map<Square,List<Piece>> tMoves, King tKing) {
         boolean evade = false;
@@ -217,7 +219,9 @@ public class CheckmateDetector {
     
     /*
      * Helper method to determine if the threatening piece can be captured.
+     * DOES NOT WORK AS INTENDED
      */
+
     private boolean canCapture(Map<Square,List<Piece>> poss, 
             List<Piece> threats, King k) {
         
@@ -251,6 +255,7 @@ public class CheckmateDetector {
     
     /*
      * Helper method to determine if check can be blocked by a piece.
+     * DOES NOT WORK AS INTENDED
      */
     private boolean canBlock(List<Piece> threats, 
             Map <Square,List<Piece>> blockMoves, King k) {
@@ -410,7 +415,7 @@ public class CheckmateDetector {
     /**
      * Method to get a list of allowable squares that the player can move.
      * Defaults to all squares, but limits available squares if player is in
-     * check.
+     * check. This method DOES NOT WORK AS INTENDED
      * @param b boolean representing whether it's white player's turn (if yes,
      * true)
      * @return List of squares that the player can move into.
@@ -426,8 +431,8 @@ public class CheckmateDetector {
     }
     
     /**
-     * Tests a move a player is about to make to prevent making an illegal move
-     * that puts the player in check.
+     * Tests a move a player is about to make to prevent them from taking an illegal move.
+     * that puts the player in check. But This method DOES NOT WORK AS INTENDED
      * @param p Piece moved
      * @param sq Square to which p is about to move
      * @return false if move would cause a check

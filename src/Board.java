@@ -14,7 +14,7 @@ import java.util.List;
 import javax.swing.*;
 /**
  * This class is where the board is created, pieces are put onto the board, mouse/motion listeners are created
- * and used
+ * and used, and move sets are tested.
  *
  * @author Kyle Techentin, Ken Zhu, Jesse Montel
  * @since 2022-09-14

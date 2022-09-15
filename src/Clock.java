@@ -1,4 +1,10 @@
 
+/**
+ * This is the class where all of the clock functions utilized in GameWindow are created.
+ *
+ * @author Kyle Techentin, Ken Zhu, Jesse Montel
+ * @since 2022-09-14
+ */
 public class Clock {
     private int hh;
     private int mm;
